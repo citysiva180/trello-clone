@@ -19,12 +19,15 @@ const CardContainer = styled.div`
 
 const EditButton = styled(Icon)`
   position: absolute;
+
   display: none;
+  color: black;
   right: 5px;
   top: 5px;
   opacity: 0.5;
   ${CardContainer}:hover & {
     display: block;
+
     cursor: pointer;
   }
   &:hover {
@@ -34,12 +37,14 @@ const EditButton = styled(Icon)`
 
 const DeleteButton = styled(Icon)`
   position: absolute;
+  color: black;
   display: none;
   right: 5px;
   bottom: 5px;
   opacity: 0.5;
   ${CardContainer}:hover & {
     display: block;
+
     cursor: pointer;
   }
   &:hover {
@@ -51,22 +56,22 @@ const TrelloCard = React.memo(({ text, id, listID, index, dispatch }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [cardText, setText] = useState(text);
 
-  const closeForm = e => {
+  const closeForm = (e) => {
     setIsEditing(false);
   };
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     setText(e.target.value);
   };
 
-  const saveCard = e => {
+  const saveCard = (e) => {
     e.preventDefault();
 
     dispatch(editCard(id, listID, cardText));
     setIsEditing(false);
   };
 
-  const handleDeleteCard = e => {
+  const handleDeleteCard = (e) => {
     console.log(listID);
     dispatch(deleteCard(id, listID));
   };
@@ -82,7 +87,7 @@ const TrelloCard = React.memo(({ text, id, listID, index, dispatch }) => {
   const renderCard = () => {
     return (
       <Draggable draggableId={String(id)} index={index}>
-        {provided => (
+        {(provided) => (
           <CardContainer
             {...provided.draggableProps}
             {...provided.dragHandleProps}

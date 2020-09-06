@@ -47,7 +47,7 @@ const TrelloForm = React.memo(
             placeholder={placeholder}
             autoFocus
             value={text}
-            onChange={e => onChange(e)}
+            onChange={(e) => onChange(e)}
             onBlur={closeForm}
           />
         </StyledCard>

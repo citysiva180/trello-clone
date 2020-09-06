@@ -14,6 +14,10 @@ const ListContainer = styled.div`
   padding: 8px;
   height: 100%;
   margin: 0 8px 0 0;
+  font-family: roboto;
+  color: white;
+  background-color: #0093e9;
+  background-image: linear-gradient(160deg, #0093e9 0%, #80d0c7 100%);
 `;
 
 const StyledInput = styled.input`
@@ -69,16 +73,16 @@ const TrelloList = ({ title, cards, listID, index, dispatch }) => {
     );
   };
 
-  const handleFocus = e => {
+  const handleFocus = (e) => {
     e.target.select();
   };
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     e.preventDefault();
     setListTitle(e.target.value);
   };
 
-  const handleFinishEditing = e => {
+  const handleFinishEditing = (e) => {
     setIsEditing(false);
     dispatch(editTitle(listID, listTitle));
   };
@@ -89,14 +93,14 @@ const TrelloList = ({ title, cards, listID, index, dispatch }) => {
 
   return (
     <Draggable draggableId={String(listID)} index={index}>
-      {provided => (
+      {(provided) => (
         <ListContainer
           {...provided.draggableProps}
           {...provided.dragHandleProps}
           ref={provided.innerRef}
         >
           <Droppable droppableId={String(listID)} type="card">
-            {provided => (
+            {(provided) => (
               <div>
                 <div>
                   {isEditing ? (

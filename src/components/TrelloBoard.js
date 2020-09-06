@@ -22,7 +22,7 @@ class TrelloBoard extends PureComponent {
     this.props.dispatch(setActiveBoard(boardID));
   }
 
-  onDragEnd = result => {
+  onDragEnd = (result) => {
     const { destination, source, draggableId, type } = result;
 
     if (!destination) {
@@ -52,10 +52,28 @@ class TrelloBoard extends PureComponent {
 
     return (
       <DragDropContext onDragEnd={this.onDragEnd}>
-        <Link to="/">Go Back</Link>
-        <h2>{board.title}</h2>
+        <Link
+          style={{
+            boxShadow:
+              "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);",
+            fontSize: "16px;",
+            textDecoration: "none",
+            color: "white",
+            border: "solid 2px white",
+            padding: "5px",
+            borderRadius: "25px",
+            fontFamily: "Fredoka One",
+          }}
+          to="/"
+        >
+          Go Back
+        </Link>
+
+        <h2 style={{ color: "white", fontFamily: "Fredoka One" }}>
+          {board.title}
+        </h2>
         <Droppable droppableId="all-lists" direction="horizontal" type="list">
-          {provided => (
+          {(provided) => (
             <ListsContainer
               {...provided.droppableProps}
               ref={provided.innerRef}
@@ -63,7 +81,7 @@ class TrelloBoard extends PureComponent {
               {listOrder.map((listID, index) => {
                 const list = lists[listID];
                 if (list) {
-                  const listCards = list.cards.map(cardID => cards[cardID]);
+                  const listCards = list.cards.map((cardID) => cards[cardID]);
 
                   return (
                     <TrelloList
@@ -86,10 +104,10 @@ class TrelloBoard extends PureComponent {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   lists: state.lists,
   cards: state.cards,
-  boards: state.boards
+  boards: state.boards,
 });
 
 export default connect(mapStateToProps)(TrelloBoard);

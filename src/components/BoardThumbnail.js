@@ -4,7 +4,8 @@ import styled from "styled-components";
 const Thumbnail = styled.div`
   height: 280px;
   width: 280px;
-  background: yellow;
+  background-color: #0093e9;
+  background-image: linear-gradient(160deg, #0093e9 0%, #80d0c7 100%);
   padding: 10px;
   margin: 8px;
   display: flex;
@@ -16,7 +17,9 @@ const Thumbnail = styled.div`
 `;
 
 const Title = styled.h4`
-  color: red;
+  color: white;
+  font-family: "Fredoka One", cursive;
+  font-size: 30px;
   text-decoration: none;
 `;
 

@@ -20,6 +20,7 @@ const TrelloOpenForm = ({ list, children, onClick }) => {
     opacity: ${buttonTextOpacity};
     color: ${buttonTextColor};
     background-color: ${buttonTextBackground};
+    font-family: roboto;
   `;
 
   return (

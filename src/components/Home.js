@@ -26,7 +26,7 @@ const CreateTitle = styled.h3`
   font-size: 48px;
   color: white;
   font-weight: bold;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Fredoka One", cursive;
 `;
 
 const CreateInput = styled.input`
@@ -47,17 +47,17 @@ const Home = ({ boards, boardOrder, dispatch }) => {
 
   const [newBoardTitle, setNewBoardTitle] = useState("");
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     setNewBoardTitle(e.target.value);
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(addBoard(newBoardTitle));
   };
 
   const renderBoards = () => {
-    return boardOrder.map(boardID => {
+    return boardOrder.map((boardID) => {
       const board = boards[boardID];
 
       return (
@@ -94,9 +94,9 @@ const Home = ({ boards, boardOrder, dispatch }) => {
   );
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   boards: state.boards,
-  boardOrder: state.boardOrder
+  boardOrder: state.boardOrder,
 });
 
 export default connect(mapStateToProps)(Home);
